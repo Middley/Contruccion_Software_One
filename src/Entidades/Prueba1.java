@@ -7,6 +7,7 @@ package Entidades;
 
 import Util.MisConstantes;
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *
  * @author DEYGLIS MIDDLEY
@@ -14,49 +15,74 @@ import java.util.ArrayList;
 public class Prueba1 {
     
     
-    public ArrayList ListaAsistentes(){        
-        ArrayList<Asistente> asistentes = new ArrayList<>();        
-        Asistente as1 = new Asistente("c","io@gmail.com", "luis","cantares","213454","Av. Raimondi 234");                        
-        asistentes.add(as1);                       
-        return asistentes;
+    
+    public Scanner sc(){
+        Scanner sc = new Scanner(System.in);
+        return sc;
     }
     
-    public MisConstantes constantes(char c){        
-        MisConstantes a = new MisConstantes(c);        
-        return a;
+//    public MisConstantes getConsantes(){
+//        MisConstantes cons = new MisConstantes();
+//        return cons;
+//    }
+//    
+    public Expositor getExpositor(){
+        System.out.println(" ---- AGREGANDO UN EXPOSITOR -----");
+        System.out.println("Ingrese codigo: ");
+        String code = sc().nextLine();
+        System.out.println("Ingrese Correo: ");
+        String correo = sc().nextLine();
+        System.out.println("Ingrese Nombre: ");
+        String name = sc().nextLine();
+        System.out.println("Ingrese Apellido: ");
+        String lastName = sc().nextLine();
+        Expositor ex = new Expositor(code, correo, name, lastName);
+        return ex;
     }
     
-    public ArrayList ListaExpositores(){
-        ArrayList<Expositor> expositores = new ArrayList<>();
-        Expositor ex1 = new Expositor("123","no tiene ","Pablo","Ibarra");
-//        Expositor ex2 = new Expositor("321","no tiene ","Santiago","Perez");
-//        Expositor ex3 = new Expositor("000","no tiene ","Pedro","Peres");
-                
-        expositores.add(ex1);
-//        expositores.add(ex2);
-//        expositores.add(ex3);
+    public Asistente getAsistentes(){
+        System.out.println(" ---- AGREGANDO UN ASISTENTE -----");
+        System.out.println("Ingrese codigo: ");
+        String code = sc().nextLine();
+        System.out.println("Ingrese Correo: ");
+        String email = sc().nextLine();
+        System.out.println("Ingrese Nombre: ");
+        String name = sc().nextLine();
+        System.out.println("Ingrese Apellido: ");
+        String lastName = sc().nextLine();
+        System.out.println("Ingrese telefono: ");
+        String phoneNumber = sc().nextLine();
+        System.out.println("Ingrese Direccion: ");
+        String Address = sc().nextLine();        
+        Asistente as = new Asistente(code, email, name, lastName, phoneNumber, Address);
+        return as;
+    }
+      
+            
         
-        return expositores;
-    }
-    
-    public Expositor expositor(){
-        Expositor exp = new Expositor("123","asdasd","carlos","FLores");
-        return exp;
-    }
-    
-    
-    public void ejecutable(){
-        Evento ev = new Evento(constantes('c'),"Narnia", 1, 2, 3, true,expositor());
-        ev.setAsistentes(ListaAsistentes());
-//        Evento ev1 = new Evento(constantes('c'),"Narnia", 3, 2, 3, true,);
-//        Evento ev2 = new Evento(constantes('c'),"Narnia", 4, 0, 3, true,);
-        System.out.println(ev.toString());
-        System.out.println(ev.getAsistentes().get(0).lastName);
-    }
-    
     public static void main(String[] args) {
-        Prueba1 p = new Prueba1();
-        p.ejecutable();
+        Prueba1 p1 = new Prueba1();
+        
+        ArrayList<Asistente> as = new ArrayList<>();
+        ArrayList<Evento> event = new ArrayList<>();
+        
+        Evento evento1 = new Evento("Narnia",12, 2, 4, true,p1.getExpositor());        
+        
+        as.add(p1.getAsistentes());
+        as.add(p1.getAsistentes());
+        as.add(p1.getAsistentes());
+        as.add(p1.getAsistentes());
+        as.add(p1.getAsistentes());
+        
+        evento1.setAsistentes(as);
+        event.add(evento1);
+        
+        
+        
+        
+        System.out.println(evento1.toString());
+        
     }
+    
     
 }

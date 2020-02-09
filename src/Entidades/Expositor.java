@@ -14,5 +14,6 @@ public class Expositor extends Person{
     public Expositor(String code, String correo, String name, String lastName) {
         super(code, correo, name, lastName);
     }            
+
     
 }

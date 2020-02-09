@@ -10,10 +10,11 @@ package Entidades;
  * @author DEYGLIS MIDDLEY
  */
 public abstract class Person {
+    
     private String code;
     private String correo;    
-    protected String name;
-    protected String lastName;
+    protected final String name;
+    protected final String lastName;
 
     public Person(String code, String correo, String name, String lastName) {
         this.code = code;
@@ -41,18 +42,18 @@ public abstract class Person {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+   
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    //public abstract boolean disponibilidad();
+    
+    public String mostrar() {
+        return  "code: " + code + ", correo: " + correo + ", name: " + name + ", lastName: " + lastName ;
     }
+    
     
     
 }

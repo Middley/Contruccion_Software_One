@@ -34,6 +34,15 @@ public class Asistente extends Person{
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }    
+    }
+
+    @Override
+    public String toString() {
+        return "Asistente{"+mostrar() + "telefono=" + telefono + ", direccion=" + direccion + '}';
+    }
+   
+
+    
+    
     
 }

@@ -14,20 +14,20 @@ import java.util.ArrayList;
  */
 public class Evento {
     
-    public MisConstantes costos;
-    private String titulo;
+    //public MisConstantes codigo;
+    private final String titulo;
     private int duracion;
     private Expositor expositor;
     private int hora_ingreso;
     private int hora_salida;
     private boolean temporada;
+    private static int aviso = 0;//aviso para saber la ubicacion
     
     private ArrayList<Asistente> asistentes;    
     //private ArrayList<Expositor> expositores;
 
-    public Evento(MisConstantes costos, String titulo, int duracion, int ingreso,int salida,boolean temp,Expositor expositor){
-        
-        this.costos = costos;
+    public Evento(String titulo, int duracion, int ingreso,int salida,boolean temp,Expositor expositor){
+                
         this.titulo = titulo;
         this.duracion = duracion;
         this.hora_ingreso = ingreso;
@@ -36,23 +36,16 @@ public class Evento {
         this.expositor = expositor;
         asistentes = new ArrayList<>();
     }
-
-    public MisConstantes getCostos() {
-        return costos;
+    
+    public Evento(){       
+        this.titulo = "N";
+        this.duracion = 1;
+        this.hora_ingreso = 0;
+        this.hora_salida = 1;
+        this.temporada = false;        
+        asistentes = new ArrayList<>();
     }
-
-    public void setCostos(MisConstantes costos) {
-        this.costos = costos;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
+       
     public int getDuracion() {
         return duracion;
     }
@@ -99,52 +92,45 @@ public class Evento {
 
     public void setAsistentes(ArrayList<Asistente> asistentes) {
         this.asistentes = asistentes;
-    }
-    
-    
-    
-    
+    }    
 
-    
-    
-    
-    
-    public double costoIngreso(char codigo){
-        String cad = ""+codigo;
-        if(cad.equalsIgnoreCase("p"))
-            return costos.Platinum;
-        else if(cad.equalsIgnoreCase("g"))
-            return costos.Gold;
-        else if(cad.equalsIgnoreCase("v"))
-            return costos.VIP;
-        else
+    public double entranceFee(char cod){//costo de entrada
+        String aux = ""+cod;
+        if(aux.equalsIgnoreCase("p")){
+            aviso = 0;
+            return MisConstantes.ubicacion[0];
+        }            
+        else if(aux.equalsIgnoreCase("g")){
+            aviso = 1;
+            return MisConstantes.ubicacion[1];
+        }                
+        else if(aux.equalsIgnoreCase("v")){
+            aviso = 2;
+            return MisConstantes.ubicacion[2];
+        }            
+        else 
             return 0;
     }
     
-    
-    public double montoIGV(char codigo,double igv){
-        return costoIngreso(codigo)+igv;
+    public double totalPayIGV(char cod){// total a pagar incluyendo igv
+        return entranceFee(cod)*MisConstantes.IGV;
     }
     
-    public double montoDescuento(char codigo,double igv){
+    public double Discounts(char c){// descuento de 5% y 10%
         if(temporada)
-            return montoIGV(codigo, igv)*0.1;
+            return totalPayIGV(c)*0.1;
         else if(!temporada)
-            return montoIGV(codigo, igv)*0.05;
-        else
+            return totalPayIGV(c)*0.05;
+        else 
             return 0;
     }
 
     @Override
     public String toString() {
-        return "Evento{" + "costos=" + costos.getCode() + ", titulo=" + titulo + ", duracion=" + duracion + ", expositor=" + expositor.lastName + ", hora_ingreso=" + hora_ingreso + ", hora_salida=" + hora_salida + ", temporada=" + temporada + ", asistentes=" + asistentes + '}';
+        return "Event{" + "\nUbicacion: " + MisConstantes.costoUbicacion(aviso) + ", \nitulo: " + titulo + ", \nduracion: " + duracion + ", \nExpositor: " 
+                + expositor.toString() + ", \nhora_ingreso: " + hora_ingreso + ", \nhora_salida: " + hora_salida 
+                + ", \nTemporada: " + temporada + ", \nAsistentes: " + asistentes.toString() + '}';
     }
-
-    
-    
-    
-    
-    
-    
+                
     
 }
