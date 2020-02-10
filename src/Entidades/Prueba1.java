@@ -21,11 +21,6 @@ public class Prueba1 {
         return sc;
     }
     
-//    public MisConstantes getConsantes(){
-//        MisConstantes cons = new MisConstantes();
-//        return cons;
-//    }
-//    
     public Expositor getExpositor(){
         System.out.println(" ---- AGREGANDO UN EXPOSITOR -----");
         System.out.println("Ingrese codigo: ");
