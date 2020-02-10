@@ -10,7 +10,7 @@ package Entidades;
  * @author DEYGLIS MIDDLEY
  */
 public class Asistente extends Person{
-    
+     
     private String telefono;
     private String direccion;
 

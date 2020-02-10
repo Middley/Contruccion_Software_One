@@ -15,5 +15,5 @@ public class Expositor extends Person{
         super(code, correo, name, lastName);
     }            
 
-    
+     
 }

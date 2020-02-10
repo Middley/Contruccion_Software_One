@@ -63,24 +63,15 @@ public class Prueba1 {
     public static void main(String[] args) {
         Prueba1 p1 = new Prueba1();
         
-        ArrayList<Asistente> as = new ArrayList<>();
-        ArrayList<Evento> event = new ArrayList<>();
+        ArrayList<Asistente> as = new ArrayList<>();        
         
-        Evento evento1 = new Evento("Narnia",12, 2, 4, true,p1.getExpositor());        
-        
-        as.add(p1.getAsistentes());
-        as.add(p1.getAsistentes());
-        as.add(p1.getAsistentes());
-        as.add(p1.getAsistentes());
-        as.add(p1.getAsistentes());
-        
-        evento1.setAsistentes(as);
-        event.add(evento1);
-        
-        
-        
-        
+        Evento evento1 = new Evento("Narnia",12, 2, 4, false,p1.getExpositor());       
+        //as.add(new Asistente("123","aasda","luis","Peres","123456","av. raymondi"));        
+                                
+        evento1.Discounts('v');        
+        //evento1.setAsistentes(as);//agrego un asistente al array de asistentes         
         System.out.println(evento1.toString());
+        
         
     }
     

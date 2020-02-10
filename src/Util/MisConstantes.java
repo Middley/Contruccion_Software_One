@@ -19,13 +19,8 @@ public class MisConstantes {
 
     public static double ubicacion[] = {250.50,150.50,95.0}; // no van a cambiar never
     public static final double IGV = 0.18;
-
-    @Override
-    public String toString() {
-        return "MisConstantes{" + '}';
-    }
-
-    public static String costoUbicacion(int ubicacion){
+    
+    public static String Ubicacion(int ubicacion){
         switch (ubicacion) {
             case 0:
                 return "Platinum";                

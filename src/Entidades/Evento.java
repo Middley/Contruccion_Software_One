@@ -13,8 +13,7 @@ import java.util.ArrayList;
  * @author DEYGLIS MIDDLEY
  */
 public class Evento {
-    
-    //public MisConstantes codigo;
+        
     private final String titulo;
     private int duracion;
     private Expositor expositor;
@@ -22,7 +21,7 @@ public class Evento {
     private int hora_salida;
     private boolean temporada;
     private static int aviso = 0;//aviso para saber la ubicacion
-    
+    private double costo;
     private ArrayList<Asistente> asistentes;    
     //private ArrayList<Expositor> expositores;
 
@@ -94,6 +93,19 @@ public class Evento {
         this.asistentes = asistentes;
     }    
 
+    public void setCosto(double costo){
+        this.costo = costo;
+    }
+    
+    public double getCosto(){
+        return costo;
+    }
+    
+    // ----------------------------------------------------------
+    // ------------------ METODOS PROPIOS -----------------------
+    // ----------------------------------------------------------
+    
+    
     public double entranceFee(char cod){//costo de entrada
         String aux = ""+cod;
         if(aux.equalsIgnoreCase("p")){
@@ -113,21 +125,27 @@ public class Evento {
     }
     
     public double totalPayIGV(char cod){// total a pagar incluyendo igv
-        return entranceFee(cod)*MisConstantes.IGV;
+        return entranceFee(cod)*MisConstantes.IGV + entranceFee(cod);
     }
     
-    public double Discounts(char c){// descuento de 5% y 10%
-        if(temporada)
-            return totalPayIGV(c)*0.1;
-        else if(!temporada)
-            return totalPayIGV(c)*0.05;
-        else 
-            return 0;
+    public void Discounts(char c){// descuento de 5% y 10%
+        
+        double a = 0.0;
+        if(temporada){            
+            //a = totalPayIGV(c)*0.1;            
+            setCosto(totalPayIGV(c)-totalPayIGV(c)*0.1);            
+        }                        
+        else if(!temporada){
+            //a = totalPayIGV(c)*0.05;
+            setCosto(totalPayIGV(c)-totalPayIGV(c)*0.05);
+        }                    
     }
 
+    
+    
     @Override
     public String toString() {
-        return "Event{" + "\nUbicacion: " + MisConstantes.costoUbicacion(aviso) + ", \nitulo: " + titulo + ", \nduracion: " + duracion + ", \nExpositor: " 
+        return "Event{" + "\nUbicacion: " + MisConstantes.Ubicacion(aviso) + "\nCosto: "+getCosto()+", \nTitulo: " + titulo + ", \nduracion: " + duracion + ", \nExpositor: " 
                 + expositor.toString() + ", \nhora_ingreso: " + hora_ingreso + ", \nhora_salida: " + hora_salida 
                 + ", \nTemporada: " + temporada + ", \nAsistentes: " + asistentes.toString() + '}';
     }
