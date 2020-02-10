@@ -22,8 +22,7 @@ public class Evento {
     private boolean temporada;
     private static int aviso = 0;//aviso para saber la ubicacion
     private double costo;
-    private ArrayList<Asistente> asistentes;    
-    //private ArrayList<Expositor> expositores;
+    private ArrayList<Asistente> asistentes;        
 
     public Evento(String titulo, int duracion, int ingreso,int salida,boolean temp,Expositor expositor){
                 
@@ -35,16 +34,7 @@ public class Evento {
         this.expositor = expositor;
         asistentes = new ArrayList<>();
     }
-    
-    public Evento(){       
-        this.titulo = "N";
-        this.duracion = 1;
-        this.hora_ingreso = 0;
-        this.hora_salida = 1;
-        this.temporada = false;        
-        asistentes = new ArrayList<>();
-    }
-       
+          
     public int getDuracion() {
         return duracion;
     }
@@ -89,8 +79,8 @@ public class Evento {
         return asistentes;
     }
 
-    public void setAsistentes(ArrayList<Asistente> asistentes) {
-        this.asistentes = asistentes;
+    public void setAsistentes(Asistente asistentes) {
+        this.asistentes.add(asistentes);
     }    
 
     public void setCosto(double costo){
@@ -131,17 +121,11 @@ public class Evento {
     public void Discounts(char c){// descuento de 5% y 10%
         
         double a = 0.0;
-        if(temporada){            
-            //a = totalPayIGV(c)*0.1;            
+        if(temporada)        
             setCosto(totalPayIGV(c)-totalPayIGV(c)*0.1);            
-        }                        
-        else if(!temporada){
-            //a = totalPayIGV(c)*0.05;
-            setCosto(totalPayIGV(c)-totalPayIGV(c)*0.05);
-        }                    
-    }
-
-    
+        else if(!temporada)            
+            setCosto(totalPayIGV(c)-totalPayIGV(c)*0.05);          
+    }   
     
     @Override
     public String toString() {

@@ -71,7 +71,7 @@ public class Prueba1 {
         evento1.Discounts('v');        
         //evento1.setAsistentes(as);//agrego un asistente al array de asistentes         
         System.out.println(evento1.toString());
-        
+            
         
     }
     
