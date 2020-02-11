@@ -11,17 +11,26 @@ package pc02.beans;
  */
 public abstract class Product {
     
+    protected static String tipo;
     protected int code;
     protected String description;
     protected int stock;
     protected  static double precio;
-    //protected final static double[] precio = {10.0,8.0,3.0};
-
-    public Product(int code, String description, int stock, double precio) {
+    //protected final static double[] precio = {10.0,8.0,3.0};    
+    public Product(int code, String description, int stock, double precio,String tipo) {
         this.code = code;
         this.description = description;
         this.stock = stock;
         this.precio = precio;
+        Product.tipo = tipo;
+    }
+
+    public static String getTipo() {
+        return tipo;
+    }
+
+    public static void setTipo(String tipo) {
+        Product.tipo = tipo;
     }
 
     public int getCode() {
@@ -43,11 +52,7 @@ public abstract class Product {
     public int getStock() {
         return stock;
     }
-
-    public void setStock(int llevar) {
-        this.stock-=stock;
-    }
-
+       
     public static double getPrecio() {
         return precio;
     }

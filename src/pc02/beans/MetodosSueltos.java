@@ -5,19 +5,14 @@
  */
 package pc02.beans;
 
+import java.util.Scanner;
+
 /**
  *
  * @author DEYGLIS MIDDLEY
  */
-public class Queso extends Product{
+public class MetodosSueltos {
     
-    public static int stockQueso = 8000;
-    static final String tipo = "Queso";
-    
-    public Queso(int code, String description) {
-        super(code, description,stockQueso, 10.0,tipo);        
-    }
-    
-        
+   
     
 }

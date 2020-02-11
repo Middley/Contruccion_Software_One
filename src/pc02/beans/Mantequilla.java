@@ -12,11 +12,12 @@ package pc02.beans;
 public class Mantequilla extends Product{
     
     public static final int stockMante = 12000;
+    public static final String tipo = "Mantequilla";
     
     public Mantequilla(int code, String description) {
-        super(code, description, stockMante, 3.0);
+        super(code, description, stockMante, 3.0,tipo);
     }
     
-    
+     
     
 }

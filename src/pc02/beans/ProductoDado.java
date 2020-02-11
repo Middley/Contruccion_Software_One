@@ -9,14 +9,10 @@ package pc02.beans;
  *
  * @author DEYGLIS MIDDLEY
  */
-public class Leche extends Product{
-        
-    private static final int stockMilk = 10200;
-    public static final String tipo = "Leche";
+public class ProductoDado {
     
-    public Leche(int code, String description) {
-        super(code, description, stockMilk, 8.0,tipo);
+    public  double calcularTotal(int cantidad){
+        
     }
-      
     
 }
