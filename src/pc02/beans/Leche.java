@@ -11,7 +11,7 @@ package pc02.beans;
  */
 public class Leche extends Product{
         
-    private static final int stockMilk = 10200;
+    public static int stockMilk = 10200;
     public static final String tipo = "Leche";
     
     public Leche(int code, String description) {

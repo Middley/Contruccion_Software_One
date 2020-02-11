@@ -72,16 +72,41 @@ public class pJuridica extends Person{
             this.tipo = tipo;
         }else{
             System.out.println("No exites mas productos");            
-        }
-        
+        }        
     }
+    
     
     
     
     // ========================================================================
     // =================== un tipo de producto al mes =========================
     
-        
+    public void ReduceStockQueso(int cantidad){
+        try {
+            if(Queso.stockQueso>0){
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Stock insuficiente: "+e);
+        }        
+    }
+    
+    
+    public int pedidoCantidad(int cantidad){
+        if(ban==0){
+            Queso.stockQueso-=cantidad;
+        }else if(ban==1){
+            Leche.stockMilk-=cantidad;
+        }else if(ban==2){
+            Mantequilla.stockMante-=cantidad;
+        }else
+            return -1;
+            
+    }
+    
+    
+    
+    
     
 }
     

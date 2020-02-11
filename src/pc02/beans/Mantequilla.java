@@ -11,7 +11,7 @@ package pc02.beans;
  */
 public class Mantequilla extends Product{
     
-    public static final int stockMante = 12000;
+    public static int stockMante = 12000;
     public static final String tipo = "Mantequilla";
     
     public Mantequilla(int code, String description) {

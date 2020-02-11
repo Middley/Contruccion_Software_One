@@ -17,7 +17,7 @@ public class Queso extends Product{
     public Queso(int code, String description) {
         super(code, description,stockQueso, 10.0,tipo);        
     }
-    
+        
         
     
 }
