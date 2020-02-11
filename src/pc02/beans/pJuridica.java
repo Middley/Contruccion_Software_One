@@ -5,19 +5,17 @@
  */
 package pc02.beans;
 
-import java.util.Scanner;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author DEYGLIS MIDDLEY
  */
+
 public class pJuridica extends Person{
     
     private String ruc;
     public String nameTienda;           
     private int cantidad;
-    
+    public double precioCompra;
     private String tipo;
     
     public int ban;
@@ -80,30 +78,58 @@ public class pJuridica extends Person{
     
     // ========================================================================
     // =================== un tipo de producto al mes =========================
+    // ========================================================================
     
-    public void ReduceStockQueso(int cantidad){
-        try {
-            if(Queso.stockQueso>0){
-                
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Stock insuficiente: "+e);
+    public int pedidoCantidad(String t,int cantidad){
+        int can=0;
+        setTipo(tipo);
+        switch (ban) {
+            case 0:
+                Queso.stockQueso-=can;
+                can = can*100;
+                precioCompra=Queso.stockQueso*100;
+                return can;
+            case 1:
+                Leche.stockMilk-=can;
+                Leche.stockMilk-=can;
+                can = can*100;
+                return can;
+            case 2:
+                Mantequilla.stockMante-=can;
+                can = can*100;
+                Mantequilla.stockMante-=can;
+                return can;
+            default:
+                return can;
+        }
+    }
+        
+    public boolean disponibilidadQueso(int cantidad){
+        if(cantidad<100){                        
+            return true;
+        }else{
+            System.out.println("Stock insuficiente");
+            return false;
         }        
     }
     
-    
-    public int pedidoCantidad(int cantidad){
-        if(ban==0){
-            Queso.stockQueso-=cantidad;
-        }else if(ban==1){
-            Leche.stockMilk-=cantidad;
-        }else if(ban==2){
-            Mantequilla.stockMante-=cantidad;
-        }else
-            return -1;
-            
+    public boolean disponibilidadLeche(int cantidad){
+        if(cantidad<100){                        
+            return true;
+        }else{
+            //System.out.println("Stock insuficiente");
+            return false;
+        }        
     }
     
+    public boolean disponibilidadMantequilla(int cantidad){
+        if(cantidad<100){                        
+            return true;
+        }else{
+            //System.out.println("Stock insuficiente");
+            return false;
+        }        
+    }
     
     
     

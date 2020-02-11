@@ -9,6 +9,7 @@ package pc02.beans;
  *
  * @author DEYGLIS MIDDLEY
  */
+
 public class pNatural extends Person{
     
     private String dni;
@@ -23,38 +24,41 @@ public class pNatural extends Person{
         this.paterno = paterno;
         this.materno = materno;
     }
-
+    
     public String getDni() {
         return dni;
     }
-
+    
     public void setDni(String dni) {
         this.dni = dni;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
-
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
     public String getPaterno() {
         return paterno;
     }
-
+    
     public void setPaterno(String paterno) {
         this.paterno = paterno;
     }
-
+    
     public String getMaterno() {
         return materno;
     }
-
+    
     public void setMaterno(String materno) {
         this.materno = materno;
     }
+        
+    
+    
     
     
 }

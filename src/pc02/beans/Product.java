@@ -60,26 +60,7 @@ public abstract class Product {
 //    public static void setPrecio(double precio) {
 //        Product.precio = precio;
 //    }
-    
-    public static void main(String[] args) {
         
-        int x=0,y,z;        
-        y=z=6;
         
-        x =-1+4*7-27/3;  
-        if (x%2!=0)  
-	x+=4; 
-                else 
-	 	x*=4; 	 
- 
-    System.out.println ("Valor de X=" + x); 
-
-        
-        double result =2*x+y/z;
-        System.out.println("el resultado es:"+result);
-        
-    }
-    
-    
                             
 }
