@@ -59,6 +59,79 @@ public class pNatural extends Person{
         
     
     
+    // =======================================================================
+    
+    
+    
+    public boolean Restric100(int cantidad,String tipo){
+        if(cantidad<=100)
+            return true;
+        else
+            return false;
+    }
+    
+    int bandera = 0;
+    
+    public boolean disponibilidadStock(int cantidad,String tipo){
+        
+        if(!Restric100(cantidad, tipo))// para ver si supera la 100 ventas
+            return false;
+        
+        if(tipo.equalsIgnoreCase("Queso")){// si es que se compra de tipo queso
+            bandera = 0;// bariable para saber de que tipo se esta vendiendo
+            if(cantidad>Queso.stockQueso){
+                return false;
+            }
+            return true;
+                            
+        }else if(tipo.equalsIgnoreCase("Leche")){// si es que se compra de tipo queso
+            bandera = 1;
+            if(cantidad>Leche.stockMilk){
+                return false;
+            }
+            return true;
+        }
+        else if(tipo.equalsIgnoreCase("Mantequilla")){// si es que se compra de tipo queso
+            bandera = 2;
+            if(cantidad>Mantequilla.stockMante)
+                return false;
+            else
+                return true;
+        }
+        else 
+            return false;
+    }
+    
+    
+    
+    public void RealizandoVenta(int cantidad, String tipo){
+        double venta = 0.0;
+        if(disponibilidadStock(cantidad, tipo)){
+            
+        }
+        
+    }
+    
+    
+    
+    
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

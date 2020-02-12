@@ -116,8 +116,7 @@ public class pJuridica extends Person{
     public boolean disponibilidadLeche(int cantidad){
         if(cantidad<100){                        
             return true;
-        }else{
-            //System.out.println("Stock insuficiente");
+        }else{            
             return false;
         }        
     }
@@ -125,8 +124,7 @@ public class pJuridica extends Person{
     public boolean disponibilidadMantequilla(int cantidad){
         if(cantidad<100){                        
             return true;
-        }else{
-            //System.out.println("Stock insuficiente");
+        }else{            
             return false;
         }        
     }
