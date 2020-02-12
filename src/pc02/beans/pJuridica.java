@@ -5,6 +5,9 @@
  */
 package pc02.beans;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author DEYGLIS MIDDLEY
@@ -17,8 +20,8 @@ public class pJuridica extends Person{
     private int cantidad;
     public double precioCompra;
     private String tipo;
-    
-    public int ban;
+            
+    public int bandera;
     
     //private String tipo;
     
@@ -29,6 +32,12 @@ public class pJuridica extends Person{
         this.ruc=ruc+"";
         this.nameTienda = nameTienda;
     }
+    
+//    private pJuridica(String nameTienda,String direccion, String correo, long telefono) {
+//        super(direccion, correo, telefono);
+//        this.ruc=ruc+"";
+//        this.nameTienda = nameTienda;
+//    }
 
     public String getRuc() {
         return ruc;
@@ -58,51 +67,82 @@ public class pJuridica extends Person{
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+//    public void setTipo(String tipo) {
+//        if(tipo.equalsIgnoreCase("Queso")){
+//            bandera = 0;            
+//        }else if(tipo.equalsIgnoreCase("Leche")){
+//            bandera = 1;           
+//        }else if(tipo.equalsIgnoreCase("Mantequilla")){
+//            bandera = 2;            
+//        }else{
+//            System.out.println("No exites mas productos");            
+//        }
+//        this.tipo = tipo;
+//    }
+    
+          
+    public boolean Restric100(int cantidad){
+        int cientos = cantidad*100;
         if(tipo.equalsIgnoreCase("Queso")){
-            ban = 0;
-            this.tipo = tipo;
+            if(cientos>Queso.STOCKQUESO){
+                return false;
+            }
+            return true;
         }else if(tipo.equalsIgnoreCase("Leche")){
-            ban = 1;
-            this.tipo = tipo;
+            if(cientos>Leche.STOCKMILK){
+                return false;
+            }
+            return true;
         }else if(tipo.equalsIgnoreCase("Mantequilla")){
-            ban = 2;
-            this.tipo = tipo;
-        }else{
-            System.out.println("No exites mas productos");            
-        }        
+            if(cientos>Mantequilla.STOCKMANTE){
+                return false;
+            }
+            return true;
+        }
+        return false;        
     }
     
     
-    
+    public boolean disponibilidadStock(int cantidad,String tipo){        
+        if(!Restric100(cantidad))// para ver si supera la 100 ventas
+            return false;
+        
+        if(tipo.equalsIgnoreCase("Queso")){// si es que se compra de tipo queso
+            if(disponibilidadQueso(cantidad)){                
+                if(cantidad>Queso.STOCKQUESO){
+                    return false;
+                }
+                bandera = 0;// bariable para saber de que tipo se esta vendiendo
+                return true;
+            }
+            
+            return true;
+                            
+        }else if(tipo.equalsIgnoreCase("Leche")){// si es que se compra de tipo queso
+            if(disponibilidadLeche(cantidad)){
+                if(cantidad>Leche.STOCKMILK){
+                   return false;
+                }
+            }
+            bandera = 1;
+            return true;
+        }
+        
+        else if(tipo.equalsIgnoreCase("Mantequilla")){// si es que se compra de tipo queso 
+            if(disponibilidadMantequilla(cantidad)){
+                if(cantidad>Mantequilla.STOCKMANTE)
+                    return false;
+            }           
+            bandera = 2;
+            return true;
+        }
+        else 
+            return false;
+    }
     
     // ========================================================================
     // =================== un tipo de producto al mes =========================
-    // ========================================================================
-    
-    public int pedidoCantidad(String t,int cantidad){
-        int can=0;
-        setTipo(tipo);
-        switch (ban) {
-            case 0:
-                Queso.stockQueso-=can;
-                can = can*100;
-                precioCompra=Queso.stockQueso*100;
-                return can;
-            case 1:
-                Leche.stockMilk-=can;
-                Leche.stockMilk-=can;
-                can = can*100;
-                return can;
-            case 2:
-                Mantequilla.stockMante-=can;
-                can = can*100;
-                Mantequilla.stockMante-=can;
-                return can;
-            default:
-                return can;
-        }
-    }
+    // ========================================================================                            
         
     public boolean disponibilidadQueso(int cantidad){
         if(cantidad<100){                        

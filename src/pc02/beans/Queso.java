@@ -11,11 +11,11 @@ package pc02.beans;
  */
 public class Queso extends Product{
     
-    public static int stockQueso = 8000;
+    public static int STOCKQUESO = 8000;
     static final String tipo = "Queso";
     
     public Queso(int code, String description) {
-        super(code, description,stockQueso, 10.0,tipo);        
+        super(code, description,STOCKQUESO, 10.0,tipo);        
     }
         
         

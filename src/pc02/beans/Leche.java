@@ -11,11 +11,11 @@ package pc02.beans;
  */
 public class Leche extends Product{
         
-    public static int stockMilk = 10200;
+    public static int STOCKMILK = 10200;
     public static final String tipo = "Leche";
     
     public Leche(int code, String description) {
-        super(code, description, stockMilk, 8.0,tipo);
+        super(code, description, STOCKMILK, 8.0,tipo);
     }
       
     

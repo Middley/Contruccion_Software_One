@@ -16,6 +16,8 @@ public class pNatural extends Person{
     private String nombre;
     private String paterno;
     private String materno;
+    
+    private int bandera = 0;
 
     public pNatural(long dni,String nombre,String paterno,String materno,String direccion, String correo, long telefono) {
         super(direccion, correo, telefono);
@@ -64,13 +66,14 @@ public class pNatural extends Person{
     
     
     public boolean Restric100(int cantidad,String tipo){
+        
         if(cantidad<=100)
             return true;
         else
             return false;
     }
     
-    int bandera = 0;
+    
     
     public boolean disponibilidadStock(int cantidad,String tipo){
         
@@ -79,21 +82,21 @@ public class pNatural extends Person{
         
         if(tipo.equalsIgnoreCase("Queso")){// si es que se compra de tipo queso
             bandera = 0;// bariable para saber de que tipo se esta vendiendo
-            if(cantidad>Queso.stockQueso){
+            if(cantidad>Queso.STOCKQUESO){
                 return false;
             }
             return true;
                             
         }else if(tipo.equalsIgnoreCase("Leche")){// si es que se compra de tipo queso
             bandera = 1;
-            if(cantidad>Leche.stockMilk){
+            if(cantidad>Leche.STOCKMILK){
                 return false;
             }
             return true;
         }
         else if(tipo.equalsIgnoreCase("Mantequilla")){// si es que se compra de tipo queso
             bandera = 2;
-            if(cantidad>Mantequilla.stockMante)
+            if(cantidad>Mantequilla.STOCKMANTE)
                 return false;
             else
                 return true;
@@ -104,12 +107,26 @@ public class pNatural extends Person{
     
     
     
-    public void RealizandoVenta(int cantidad, String tipo){
+    public double RealizandoVenta(int cantidad, String tipo){
         double venta = 0.0;
         if(disponibilidadStock(cantidad, tipo)){
-            
-        }
-        
+            if(bandera==0){
+                Queso.STOCKQUESO-=cantidad;
+                venta = cantidad*10.0;
+            }                                                
+            else if(bandera==1){
+                Leche.STOCKMILK-=cantidad;
+                venta = cantidad*8.0;
+            }                
+            else if(bandera==2){
+                Mantequilla.STOCKMANTE-=cantidad;
+                venta = cantidad*3.0;
+            }                
+            else
+                venta = 0.0;            
+        }else
+            System.out.println("Stock insuficiente");
+        return venta;
     }
     
     
