@@ -15,11 +15,11 @@ public class Club {
     
     public Club(){
         socios = new Socio[3];
-        System.out.println("--- Socio 1 ---");
+        System.out.println("--- SOCIO 1 ---");
         socios[0] = new Socio();
-        System.out.println("--- Socio 2 ---");
+        System.out.println("--- SOCIO 2 ---");
         socios[1] = new Socio();
-        System.out.println("--- Socio 3 ---");
+        System.out.println("--- SOCIO 3 ---");
         socios[2] = new Socio();
     }
     

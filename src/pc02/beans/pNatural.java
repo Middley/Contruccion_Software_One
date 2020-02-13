@@ -11,7 +11,7 @@ package pc02.beans;
  */
 
 public class pNatural extends Person{
-    
+                    
     private String dni;
     private String nombre;
     private String paterno;
@@ -110,20 +110,23 @@ public class pNatural extends Person{
     public double RealizandoVenta(int cantidad, String tipo){
         double venta = 0.0;
         if(disponibilidadStock(cantidad, tipo)){
-            if(bandera==0){
-                Queso.STOCKQUESO-=cantidad;
-                venta = cantidad*10.0;
-            }                                                
-            else if(bandera==1){
-                Leche.STOCKMILK-=cantidad;
-                venta = cantidad*8.0;
-            }                
-            else if(bandera==2){
-                Mantequilla.STOCKMANTE-=cantidad;
-                venta = cantidad*3.0;
-            }                
-            else
-                venta = 0.0;            
+            switch (bandera) {
+                case 0:
+                    Queso.STOCKQUESO-=cantidad;
+                    venta = cantidad*10.0;
+                    break;
+                case 1:
+                    Leche.STOCKMILK-=cantidad;
+                    venta = cantidad*8.0;
+                    break;
+                case 2:
+                    Mantequilla.STOCKMANTE-=cantidad;
+                    venta = cantidad*3.0;
+                    break;
+                default:            
+                    venta = 0.0;
+                    break;
+            }
         }else
             System.out.println("Stock insuficiente");
         return venta;
