@@ -61,26 +61,25 @@ public class Operaciones<Op> implements Iterable<Op>{
         Resta r1 = new Resta(0.78f,89f);
         Producto p1 = new Producto(8f,5f);
         
-        op2.add(s2.realizarSuma());
-        op2.add(r2.realizarResta());
-        op2.add(p2.realizarProducto());
-                       
-        op1.add(s1.realizarSumaD());
-        op1.add(r1.realizarRestaD());
-        op1.add(p1.realizarProductoD());
+        //Integer
+        op2.add(s2.getSuma());
+        op2.add(r2.getResta());
+        op2.add(p2.getProducto());
+                 
+        //FLoat
+        op1.add(s1.getSumaFloat());
+        op1.add(r1.getRestaFloat());
+        op1.add(p1.getProductoFloat());
         
         
         for (Integer integer : op2) {            
-            System.out.println("Operacion con Integer: "+ integer.toString());            
+            System.out.println("Operacion con Integer: "+integer.toString());            
         }
-        
+        System.out.println("\n");
         for (Float f: op1) {
             System.out.println("Operacion con FLoat: "+ f.toString());
         }
-    }
-   
-  
-    
+    }    
 }
 
 
@@ -104,11 +103,11 @@ class Suma{
         s2 = n1+n2;
     }
     
-    public int realizarSuma(){
+    public int getSuma(){
         return s1;
     }
     
-    public Float realizarSumaD(){
+    public Float getSumaFloat(){
         return s2;
     }
 }
@@ -133,16 +132,15 @@ class Resta{
         s2 = n1-n2;
     }
     
-    public int realizarResta(){
+    public int getResta(){
         return s1;
     }
     
-    public Float realizarRestaD(){
+    public Float getRestaFloat(){
         return s2;
     }
     
 }
-
 
 class Producto{
     
@@ -163,11 +161,11 @@ class Producto{
         s2 = n1*n2;
     }
     
-    public int realizarProducto(){
+    public int getProducto(){
         return s1;
     }
     
-    public Float realizarProductoD(){
+    public Float getProductoFloat(){
         return s2;
     }
     
