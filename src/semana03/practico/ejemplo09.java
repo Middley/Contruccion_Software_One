@@ -47,8 +47,7 @@ public class ejemplo09 {
         listaEmp.add(emp3);
         listaEmp.add(emp4);
         
-        //System.out.println("a) PERSONAS CON MAYOR SUELDO NETO: "+listaEmp.mostrar());
-        listaEmp.mostrar();
+        //System.out.println("a) PERSONAS CON MAYOR SUELDO NETO: "+listaEmp.mostrar());        
         System.out.println("b) SUELDO NETO PROMEDIO MARKETING: "+listaEmp.SueldoNetosMarketing());
         
     }
@@ -84,22 +83,7 @@ class person implements Iterable<Empleado>{
         
         return name;
     }
-    
-    public void mostrar(){
-        double aux = 0.0;
-        String name="";
-        
-        for(Empleado emp: empleados)
-            if(emp.SueldoNeto()>=aux)
-                aux = emp.SueldoNeto();
-        
-        for (Empleado emp : empleados) {
-            if(emp.SueldoNeto()==aux)
-                System.out.println(emp.SueldoNeto());
-                //System.out.println(emp.getName());
-        }
-    }
-    
+           
     public double SueldoNetosMarketing(){
         double prom = 0.0;
         for(int i=0;i<empleados.size();i++)
