@@ -55,8 +55,6 @@ public class ejemplo09 {
 }
 
 
-
-
 class person implements Iterable<Empleado>{
     
     ArrayList<Empleado> empleados = new ArrayList<>();
@@ -122,8 +120,7 @@ class person implements Iterable<Empleado>{
                     nom = empleados.get(i).getName();
         }
         return nom;
-    }
-    
+    }   
     
     public double totalPayBusiness(){//total a pagar por la empresa a todos sus empleados
         double total = 0.0;
@@ -133,21 +130,8 @@ class person implements Iterable<Empleado>{
         return total;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Empleado con Mayor Sueldo Neto: "+MayorSueldo()+"\n Promedio de Sueldos netos del área de Marketing: "+SueldoNetosMarketing()+
-//                "\nNumero de Empleados Monto Seguro superen los 100 soles: "+SuperaSeguro100()+"\n Horas Extras entre 500 y 800: "+AreaSistemas()
-//                +"\nEmpleado del SNP con el menor monto de Descuento: "+DescuentoMinimoSNP()+"\nTotal Pagar la Empresa: "+totalPayBusiness();
-//    }
-
     @Override
     public Iterator<Empleado> iterator() {
         return empleados.iterator();
-    }
-
-   
-    
-    
-    
-    
+    }                  
 }

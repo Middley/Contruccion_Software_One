@@ -16,9 +16,10 @@ public class Nodo {
     
     public Nodo(int dato){// al final de la lista simplemente enlazada
         this.dato = dato;
+        this.siguiente = null;
     }
     
-    public Nodo(int dato,Nodo n){// constructor para insertar al final 
+    public Nodo(int dato,Nodo n){// constructor para insertar al inicio
         this.dato = dato;
         this.siguiente = n;
     }
