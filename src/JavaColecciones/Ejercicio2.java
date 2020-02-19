@@ -7,7 +7,7 @@ package JavaColecciones;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.crypto.Mac;
+import java.util.TreeSet;
 
 /**
  *
@@ -26,9 +26,14 @@ public class Ejercicio2 {
         while(it.hasNext()){
             System.out.println(it.next().toString()+ " , ");
         }
+        miLista.NoseRepiten();        
         
-        miLista.NoseRepiten();
+        TreeSet<ale> al = new TreeSet<>();
+        al.add(miLista);
         
+        al.forEach((object) -> {
+            System.out.println(object);
+        });
         
     }
     
@@ -64,28 +69,24 @@ class ale<tipo> implements Iterable<tipo>{
         for(int i=1;i<lista.size()-1;i++){ 
             cont = 0;
            for(int j=0;j<lista.size();j++){               
-               System.out.println("j vale: "+j);
-               System.out.println("compara: "+lista.get(i)+ " con " +lista.get(j));
+               //System.out.println("j vale: "+j);
+               //System.out.println("compara: "+lista.get(i)+ " con " +lista.get(j));
                if(lista.get(i)==lista.get(j)){                   
                    cont++;
-                   System.out.println("cont vale: "+cont);
+                   //System.out.println("cont vale: "+cont);
                    if(cont==2)
                        break;                                      
                }else if(j==lista.size()-1 && cont!=2)
                    aux.add(lista.get(i));               
            }
-            System.out.println("");
-            
-        }
-                
+            //System.out.println("");            
+        }                
         for (int k = 0; k < aux.size(); k++) {
             System.out.println(aux.get(k));
         }
         return aux;
     }
-    
-    
-    
+      
     
     @Override
     public Iterator<tipo> iterator() {

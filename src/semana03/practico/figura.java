@@ -11,9 +11,7 @@ package semana03.practico;
  */
 public class figura {
                     
-    String cuad = "cuadrado";
-    String tri = "trianfulo";
-    String rec = "Rectangulo";
+    public int lados;
     
     public static void main(String[] args) {
         

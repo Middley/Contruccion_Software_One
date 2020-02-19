@@ -44,8 +44,8 @@ public class Ejercicio4 {
 //    }
     
     public static void main(String[] args) {
-        WUR wr = new WUR("hola como esras hola");
-        wr.mostrar();
+        WUR wr = new WUR("hola");
+        wr.SacarPalabra();
         
             
         }
@@ -57,7 +57,7 @@ public class Ejercicio4 {
 class WUR{
     
     private String frase;    
-    private ArrayList<String> palabras;
+    private final ArrayList<String> palabras;
     
     public WUR(String frase){
         this.frase = frase;
@@ -73,44 +73,45 @@ class WUR{
         for(char c = 'a';c<='z';c++){
             if(i==c)
                 return true;
-        }   
+        }
         return false;
     }
     
     private boolean letrasMayus(char i){
         for(char c = 'A';c<='Z';c++)
             if(i==c)
-                return true;
-           
+                return true;           
         return false;
     }
     
+    private String cadena(char i){        
+        return ""+frase.charAt(i);
+    }       
+        
     
-    private void Palabra(){       
+    public void SacarPalabra(){       
         String concatena = "";
         String unir = "";
-        for (int i = 0; i < frase.length(); i++){
-            if(i <= frase.length()-1){  
-                if(letrasMayus(frase.charAt(i)) || letrasMinus(frase.charAt(i))){
-                    if(!letrasMayus(frase.charAt(i-1)) && !letrasMinus(frase.charAt(i-1))){
-                        unir =""+frase.charAt(i);
+        System.out.println(frase.charAt(0));
+        for (int i = 0; i <= frase.length(); i++){
+            if(i<=frase.length()-1){
+                System.out.println("entra");
+                if(letrasMayus(frase.charAt(i))){
+                    if(letrasMayus(frase.charAt(i+1))){                       
+                        unir=""+cadena((char) i);
                         concatena+=unir;
-                    }
-                }else{
-                    palabras.add(concatena);//alamcena la palabra
-                    concatena="";//vuelve a limpiarse para almacenar nueva palabra
-                }
-            }
+                    }    
+                                          
+                        
+                }else if(letrasMinus(frase.charAt(i))){
+                    
+                }    
+                                                
+            }        
         }
-        
+        System.out.println(concatena);
     }
-    
-    public void mostrar(){
-        for(int i=0;i<palabras.size();i++){
-            System.out.println(palabras.get(i));
-        }
-    }
-    
+       
     
     public String palabrasUnico(){        
         String devuelve="";

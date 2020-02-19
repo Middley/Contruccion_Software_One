@@ -5,8 +5,6 @@
  */
 package semana02.practico;
 
-import java.util.Scanner;
-
 /**
  *
  * @author DEYGLIS MIDDLEY

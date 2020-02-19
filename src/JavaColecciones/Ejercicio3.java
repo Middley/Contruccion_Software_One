@@ -73,10 +73,8 @@ class CuentaW {
 
 public class Ejercicio3{
     public static void main(String[] args) {
-        CuentaW c = new CuentaW(" HHHHH Hola carlos Como soy carlos tienes tiempo");        
+        CuentaW c = new CuentaW("        Raquela q");
         System.out.println("Numero de letras que hay : "+c.NumLetras());
         System.out.println("Numero de palabras que hay : "+c.NumPalabras());
-        
-    }
-    
+    }    
 }
