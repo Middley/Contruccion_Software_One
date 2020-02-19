@@ -50,9 +50,15 @@ public class Alumno {
     }                       
     
     
-    public static void main(String[] args) {
-        Alumno alumno1 = new Alumno("Pablo", 1);
-        System.out.println(alumno1.mayorMenor());
-    }
     
+//    public static void main(String[] args) {
+//        Alumno alumno1 = new Alumno("Pablo", 1);
+//        System.out.println(alumno1.mayorMenor());
+//    }
+//    
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "name=" + name + ", edad=" + edad + '}';
+    }
 }

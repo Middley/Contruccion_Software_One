@@ -5,8 +5,6 @@
  */
 package semana03.teorico;
 
-import semana03.teorico.Golosina;
-import semana03.teorico.Chocolatina;
 import java.util.ArrayList;
 import java.util.Iterator;
 
