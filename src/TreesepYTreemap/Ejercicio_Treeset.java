@@ -12,6 +12,7 @@ import java.util.*;
  * @author DEYGLIS MIDDLEY
  */
 public class Ejercicio_Treeset {
+        
     
     public static void main(String[] args) {
         
@@ -52,11 +53,10 @@ class Articulo implements Comparable<Articulo>{
         this.num_articulo = num;
         this.descripcion = desc;
     }
-    
+                
     public String getDescripcion(){
         return descripcion;
-    }
-    
+    }    
     
     @Override
     public int compareTo(Articulo o) {

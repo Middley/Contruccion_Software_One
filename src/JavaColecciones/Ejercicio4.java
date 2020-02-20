@@ -48,9 +48,7 @@ public class Ejercicio4 {
         wr.SacarPalabra();
         
             
-        }
-    }
-    
+        }        
 }
 
 

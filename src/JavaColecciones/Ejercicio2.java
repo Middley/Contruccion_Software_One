@@ -15,11 +15,17 @@ import java.util.TreeSet;
  */
 public class Ejercicio2 {
     
+    public static int aleatorio(int min, int max){
+        return (int)((max-min+1)*Math.random()+min);
+    }
+       
+    
+    
     public static void main(String[] args) {
         
         ale<Integer> miLista = new ale(25);
         for(int i=0;i<miLista.topeArr;i++){
-            miLista.add(ale.aleatorio(0, 100));
+            miLista.add(Ejercicio2.aleatorio(0, 100));
         }
         
         Iterator it = miLista.iterator();
@@ -28,16 +34,17 @@ public class Ejercicio2 {
         }
         miLista.NoseRepiten();        
         
-        TreeSet<ale> al = new TreeSet<>();
+        TreeSet<ale> al = new TreeSet<>();  
         al.add(miLista);
-        
-        al.forEach((object) -> {
-            System.out.println(object);
-        });
-        
-    }
-    
+//        
+//        al.forEach((object) -> {
+//            System.out.println(object);
+//        });        
+//    }                    
 }
+
+
+
 
 class ale<tipo> implements Iterable<tipo>{
     
@@ -57,10 +64,6 @@ class ale<tipo> implements Iterable<tipo>{
     }
     
     
-    public static int aleatorio(int min, int max){
-        return (int)((max-min+1)*Math.random()+min);
-    }
-        
     
     public ArrayList NoseRepiten(){
         System.out.println("\n---- NUMEROS QUE NO SE REPITEN -----");
