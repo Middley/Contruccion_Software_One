@@ -47,7 +47,7 @@ public class Ejecutable {
                             Double.parseDouble(JOptionPane.showInputDialog(null,"Ingrese Valor"))                                                         
                             );
                     ListaDiscos.add(valor);
-                    break;                                        
+                    break;              
                                         
                 case 2:
                     System.out.println("---------- LISTA DE DISCOS ------------");
