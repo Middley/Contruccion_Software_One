@@ -6,134 +6,107 @@
 package JavaColecciones;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.TreeSet;
 
 /**
  *
  * @author DEYGLIS MIDDLEY
  */
 public class Ejercicio4 {
-    
-//    public static void main(String[] args) {
-//        int opcion = 0;
-//        WUR wr = new WUR("hola amigo como estas estas hola");
-//        do{
-//            opcion = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese Opcion \n1.- Mostrar Palabras Unicas\n2.- Mostrar palabras Duplicadas"
-//                    + "\n 3.- Salir"));
-//            switch(opcion){
-//                
-//                case 1:
-//                    wr.mostrar();
-//                    JOptionPane.showMessageDialog(null,"Las palabras Unicas de la oracion\n");
-//                    System.out.println(wr.palabrasUnico());
-//                    break;
-//                case 2:
-//                    JOptionPane.showMessageDialog(null,"Las palabras duplicadas de la oracion\n");   
-//                    System.out.println(wr.palabrasDuplicadas());
-//                    break;
-//                case 3: break;
-//                
-//                default:
-//                    JOptionPane.showMessageDialog(null," Opcion incorrecta ");
-//            }
-//            
-//            
-//            
-//        }while(opcion!=3);
-//        
-//    }
-    
-    public static void main(String[] args) {
-        WUR wr = new WUR("hola");
-        wr.SacarPalabra();
+    public static void main(String args[]) {
         
-            
-        }        
+        WUR f = new WUR("holaaa   cOmom  q");
+        f.sacanPalabras();
+        
+        for(int i=0;i<f.todos.size();i++){
+            System.out.print("Palabra: nro"+i+" : ");
+            System.out.println(f.todos.get(i));
+        }
+        
+    }
 }
 
 
 class WUR{
     
-    private String frase;    
-    private final ArrayList<String> palabras;
+    private String frase;
+    
+    ArrayList<String> todos;
+    ArrayList<String> Pduplicadas;
+    TreeSet<String> Punicas;
+    
+    String cad;
     
     public WUR(String frase){
         this.frase = frase;
-        palabras = new ArrayList<>();
+        this.Pduplicadas = new ArrayList<>();
+        this.Punicas = new TreeSet<>();
+        this.todos = new ArrayList<>();
+        this.cad = "";
     }
     
-    public void setFrase(String frase){
-        this.frase = frase;
-    }
     
-    
-    private boolean letrasMinus(char i){
-        for(char c = 'a';c<='z';c++){
-            if(i==c)
+    private boolean letraMayus(char a){
+        for(char c = 'a';c<='z';c++)
+            if(a==c)
                 return true;
-        }
         return false;
     }
     
-    private boolean letrasMayus(char i){
+    private boolean letraMinus(char a){
         for(char c = 'A';c<='Z';c++)
-            if(i==c)
-                return true;           
+            if(a==c)
+                return true;
         return false;
     }
     
-    private String cadena(char i){        
-        return ""+frase.charAt(i);
-    }       
-        
+    private String letra(int pos){        
+        return ""+frase.charAt(pos);
+    }
     
-    public void SacarPalabra(){       
-        String concatena = "";
-        String unir = "";
-        System.out.println(frase.charAt(0));
-        for (int i = 0; i <= frase.length(); i++){
-            if(i<=frase.length()-1){
-                System.out.println("entra");
-                if(letrasMayus(frase.charAt(i))){
-                    if(letrasMayus(frase.charAt(i+1))){                       
-                        unir=""+cadena((char) i);
-                        concatena+=unir;
-                    }    
-                                          
+    //frase " hola "
+    public void sacanPalabras(){
+        boolean ban = false;
+        int tam = frase.length();
+        for(int i=0;i<frase.length();i++){
+            if(letraMayus(frase.charAt(i))){
+                cad+=letra(i);
+                ban = false;
+            }else if(letraMinus(frase.charAt(i))){
+                cad+=letra(i);
+                ban = false;
+            }else if(letra(i).equals("")){
+                ban=true;
+            }
+            
+            if(ban){
+                System.out.println("cad: "+cad);
+                todos.add(cad);                    
+                cad="";
+                ban = false;
+            }            
+            if(i==tam-1){
+                todos.add(cad);
+                cad="";
+                break;
+            }
                         
-                }else if(letrasMinus(frase.charAt(i))){
-                    
-                }    
-                                                
-            }        
-        }
-        System.out.println(concatena);
-    }
-       
-    
-    public String palabrasUnico(){        
-        String devuelve="";
-        for(int i=0;i<palabras.size();i++){
-            String cad = palabras.get(i);
-            for(int j=i;j<i;j++){
-                if(cad.equalsIgnoreCase(palabras.get(j))){
-                    devuelve+=cad;
-                }
-            }
-        }
-        return devuelve;
+        }                
     }
     
-     public String palabrasDuplicadas(){        
-        String devuelve="";
-        for(int i=0;i<palabras.size();i++){
-            String cad = palabras.get(i);
-            for(int j=i;j<i;j++){
-                if(cad.equalsIgnoreCase(palabras.get(j)))
-                    devuelve+=cad + " , ";                
+    public void AsignacionPalabras(){
+        int tam = todos.size()-1;
+        for(int i=0;i<todos.size();i++){
+            for(int j=0;j<i;j++){                
+                if(todos.get(j).equals(todos.get(i))){
+                    Pduplicadas.add(todos.get(j));
+                }else if(j==tam-1)
+                    Punicas.add(todos.get(j));
             }
-        }
-        return devuelve;
-    }     
+        }                
+    }
+    
+    
     
 }
+

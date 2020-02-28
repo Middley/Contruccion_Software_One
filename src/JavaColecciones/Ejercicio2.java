@@ -5,8 +5,9 @@
  */
 package JavaColecciones;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+
+
+import java.util.Arrays;
 import java.util.TreeSet;
 
 /**
@@ -18,85 +19,73 @@ public class Ejercicio2 {
     public static int aleatorio(int min, int max){
         return (int)((max-min+1)*Math.random()+min);
     }
-       
     
     
     public static void main(String[] args) {
         
-        ale<Integer> miLista = new ale(25);
-        for(int i=0;i<miLista.topeArr;i++){
-            miLista.add(Ejercicio2.aleatorio(0, 100));
-        }
+        llenando l = new llenando(15);
+        l.mostrarNumeros();
+        l.sinRepetir();
+        l.mostrar();
         
-        Iterator it = miLista.iterator();
-        while(it.hasNext()){
-            System.out.println(it.next().toString()+ " , ");
-        }
-        miLista.NoseRepiten();        
-        
-        TreeSet<ale> al = new TreeSet<>();  
-        al.add(miLista);
-//        
-//        al.forEach((object) -> {
-//            System.out.println(object);
-//        });        
-//    }                    
+    }
+    
+                         
 }
 
-
-
-
-class ale<tipo> implements Iterable<tipo>{
+class llenando{
     
-    ArrayList<tipo> lista = new ArrayList<>();
-    int topeArr = 0;
+    private Integer numeros[];
+    private int tope;
+    private TreeSet<Integer> lista;
     
-    public ale(int tope){
-        super();
-        this.topeArr = tope;
+    
+    public llenando(int tope){
+        this.tope = tope;
+        this.numeros = new Integer[tope];
+        lista = new TreeSet<>();
+    }            
+    private void add(int pos){
+        if(numeros.length<=tope){
+            numeros[pos] = aleatorio(0, 100);
+        }else
+            throw new RuntimeException("limite superado");
     }
     
-    public void add(tipo number){
-        if(lista.size()<=topeArr)
-            lista.add(number);
-        else
-            throw new RuntimeException("Lista no da mas");
+    private int aleatorio(int min, int max){
+        return (int)((max-min+1)*Math.random()+min);
+    }              
+    
+    private void llenado(){        
+        for(int i=0;i<numeros.length;i++)
+            add(i);
     }
     
     
-    
-    public ArrayList NoseRepiten(){
-        System.out.println("\n---- NUMEROS QUE NO SE REPITEN -----");
-        ArrayList<tipo> aux = new ArrayList<>();
-        int cont;
-        for(int i=1;i<lista.size()-1;i++){ 
-            cont = 0;
-           for(int j=0;j<lista.size();j++){               
-               //System.out.println("j vale: "+j);
-               //System.out.println("compara: "+lista.get(i)+ " con " +lista.get(j));
-               if(lista.get(i)==lista.get(j)){                   
-                   cont++;
-                   //System.out.println("cont vale: "+cont);
-                   if(cont==2)
-                       break;                                      
-               }else if(j==lista.size()-1 && cont!=2)
-                   aux.add(lista.get(i));               
-           }
-            //System.out.println("");            
-        }                
-        for (int k = 0; k < aux.size(); k++) {
-            System.out.println(aux.get(k));
-        }
-        return aux;
+    public void mostrarNumeros(){
+        llenado();
+        System.out.println(" --- Todos los numeros ---");
+        for(Integer integer: numeros)
+            System.out.println(integer);
     }
-      
     
-    @Override
-    public Iterator<tipo> iterator() {
-        return lista.iterator();
+    private void pasoArray(){        
+        lista.addAll(Arrays.asList(numeros));        
     }
-
     
+    public void sinRepetir(){
+        pasoArray();
+        System.out.println("--- Numeros sin Repetir ---");
+        lista.forEach((i) -> {
+            System.out.println(i);
+        });
+    }
     
-    
+    public void mostrar(){
+        System.out.println("------- numeros sin repetir de la lista -------");
+        lista.forEach((integer) -> {
+            System.out.println(integer);
+        });
+    }
+        
 }

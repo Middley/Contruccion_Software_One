@@ -37,18 +37,6 @@ class CuentaW {
         return false;
     }
     
-//    public int NumLetras(){
-//        int contLetras = 0;
-//        String caracter = "";
-//        for(int i=0;i<cadena.length();i++){
-//            caracter = caracterAString(cadena.charAt(i));
-//            if(letras(cadena.charAt(i)))
-//                contLetras++;
-//        }                        
-//        return contLetras;
-//    }
-//    
-    
     public int NumLetras(){
         int contLetras = 0;
         String caracter = "";
