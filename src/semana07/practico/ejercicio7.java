@@ -20,10 +20,8 @@ public class ejercicio7 extends javax.swing.JFrame {
     public ejercicio7() {
         initComponents();
         vecInicial = new ArrayList<>();        
-        vecFinal = new ArrayList<>();
-        tope = Integer.parseInt(this.txtNumero.getText());
-    }
-    
+        vecFinal = new ArrayList<>();        
+    }    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,6 +50,11 @@ public class ejercicio7 extends javax.swing.JFrame {
         });
 
         btnMostrar.setText("MOSTRAR");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Vector Inicial");
 
@@ -125,24 +128,58 @@ public class ejercicio7 extends javax.swing.JFrame {
         return (int)((max-min+1)*Math.random()+min);
     }
     
-    public void condicion(){
+    private void condicion(int num){
         if(vecInicial.size()<=tope)
-            vecInicial.add(aleatorio(0,20));
+            vecInicial.add(num);
     }
     
     public void llenar(){
-        for(int i=0;i<vecInicial.size();i++){
-            condicion();
-            this.txaInicial.setText( "\n");
-        }
-            
+        for(int i=0;i<tope;i++){
+            condicion(aleatorio(0, 30));            
+        }            
+    }
+    
+    public String cad(){
+        String cad = "";
+        for(Integer i: vecInicial)
+            cad+=i+"\n";
+        return cad;
+    }
+    
+    public void vectorInverso(){
+        int j=0;
+        for(int i=vecInicial.size()-1;i>=0;i--){
+            vecFinal.add(vecInicial.get(i));
+            j++;
+        }        
+    }
+    
+    public String cad2(){
+        String cad = "";
+        for(Integer i: vecFinal)
+            cad+=i+"\n";
+        return cad;
+    }
+    
+    public void reinicia(){
+        vecFinal.clear();
     }
     
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
-                
         
-        
+        tope = Integer.parseInt(this.txtNumero.getText());//incializa el tamaño del ArrayList        
+        llenar();
+        this.txaInicial.setText(cad());
+
     }//GEN-LAST:event_btnGrabarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        // TODO add your handling code here:
+        reinicia();
+        this.txaFinal.setText("");
+        vectorInverso();
+        this.txaFinal.setText(cad2());        
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
     /**
      * @param args the command line arguments
