@@ -5,12 +5,18 @@
  */
 package JavaColecciones;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DEYGLIS MIDDLEY
  */
 public class Ejercicio5 {
-    
+    public static void main(String[] args) {
+        PaLinea pl = new PaLinea("hola mundo");
+        pl.infoLetras();
+        pl.mostrar();
+    }
     
     
 }
@@ -18,9 +24,12 @@ public class Ejercicio5 {
 class PaLinea{
     
     private String frase;
+    private ArrayList<String> letras;
+    
     
     public PaLinea(String cadena){
         this.frase = cadena;
+        letras = new ArrayList<>();
     }
     
     public void setCadena(String cadena){
@@ -43,18 +52,33 @@ class PaLinea{
         return false;
     }
     
-    public String letra(int pos){
+    public String letraString(int pos){
         return ""+frase.charAt(pos);
     }
     
-    public int NumLetras(){
-        int contLetras = 0;
-        String caracter = "";
-        for(int i=0;i<frase.length();i++)            
-            if(letrasMayus(frase.charAt(i)) || letrasMinus(frase.charAt(i)))
-                    contLetras++;
-        return contLetras;
+    private String dimeLetra(int pos){
+        return letras.get(pos);
     }
+    
+    public void infoLetras(){
+        
+        for(int i=0;i<frase.length();i++){
+            if(letrasMayus(frase.charAt(i))){
+                letras.add(letraString(i));                
+            }else if(letrasMinus(frase.charAt(i))){
+                letras.add(letraString(i));                
+            }else{
+                letras.add(null);
+            }
+        }        
+    }
+    
+    public void mostrar(){
+        for (int i = 0; i < letras.size(); i++) {
+            System.out.println("Letra: "+dimeLetra(i)+" , posicion: "+i);
+        }
+    }
+    
     
     
 }
