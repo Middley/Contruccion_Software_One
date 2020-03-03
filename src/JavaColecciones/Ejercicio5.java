@@ -15,7 +15,7 @@ public class Ejercicio5 {
     public static void main(String[] args) {
         PaLinea pl = new PaLinea("hola mundo");
         pl.infoLetras();
-        pl.mostrar();
+        System.out.println(pl.mostrar());
     }
     
     
@@ -24,12 +24,13 @@ public class Ejercicio5 {
 class PaLinea{
     
     private String frase;
-    private ArrayList<String> letras;
-    
+    private ArrayList<String> listaLetras;
+    private ArrayList<Integer> listaPosiciones;
     
     public PaLinea(String cadena){
         this.frase = cadena;
-        letras = new ArrayList<>();
+        listaLetras = new ArrayList<>();
+        listaPosiciones = new ArrayList<>();
     }
     
     public void setCadena(String cadena){
@@ -52,33 +53,30 @@ class PaLinea{
         return false;
     }
     
-    public String letraString(int pos){
+    public String letra(int pos){
         return ""+frase.charAt(pos);
     }
     
-    private String dimeLetra(int pos){
-        return letras.get(pos);
-    }
-    
     public void infoLetras(){
-        
         for(int i=0;i<frase.length();i++){
             if(letrasMayus(frase.charAt(i))){
-                letras.add(letraString(i));                
+                listaLetras.add(letra(i));
+                listaPosiciones.add(i);
             }else if(letrasMinus(frase.charAt(i))){
-                letras.add(letraString(i));                
-            }else{
-                letras.add(null);
-            }
-        }        
-    }
-    
-    public void mostrar(){
-        for (int i = 0; i < letras.size(); i++) {
-            System.out.println("Letra: "+dimeLetra(i)+" , posicion: "+i);
+                listaLetras.add(letra(i));
+                listaPosiciones.add(i);
+            }                                
         }
     }
     
+    
+    public String mostrar(){
+        String cad = "";
+        for(int i=0;i<listaLetras.size();i++){
+            cad+=" Letra: "+listaLetras.get(i)+", posicion: "+listaPosiciones.get(i)+"\n";
+        }
+        return cad;
+    }
     
     
 }
