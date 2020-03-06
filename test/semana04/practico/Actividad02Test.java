@@ -107,7 +107,7 @@ public class Actividad02Test {
         try {
         
         Actividad02 obj = new Actividad02();
-        resultadoReal = obj.calculaSalarioBruto("Encargado", 2000.0,8.0);        
+        resultadoReal = obj.calculaSalarioBruto("Encargado", 2000.0, (int) 8.0);        
         double resultadoEsperado = 1360.0;
         assertEquals(resultadoEsperado, resultadoReal);        
         } catch (Exception e) {
